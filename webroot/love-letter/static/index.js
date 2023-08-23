@@ -11,6 +11,7 @@ function Container(wish, time, texts) {
 
     // this.renderTexts(this.texts);
     this.renderText(this.texts[this.textIndex]);
+    this.updateText();
     document.querySelector('.pass-time .finalText').innerHTML = this.finalText;
     setInterval(() => {
         this.passedSeconds = Math.ceil((+ new Date() - new Date(this.beginDate).getTime()) / 1000);
@@ -25,6 +26,18 @@ function Container(wish, time, texts) {
 Container.prototype = {
     renderText(text) {
         document.getElementById("letter").innerText = text;
+    },
+    updateText() {
+        let that = this;
+        document.addEventListener('click', function (e) {
+            that.textIndex++
+            if (that.textIndex >= that.texts.length) {
+              that.textIndex--
+              return
+            }
+            let text = that.texts[that.textIndex]
+            document.getElementById("letter").innerText = text;
+          }, false)
     },
     renderTexts(texts) {
         let div = document.createElement("div");
