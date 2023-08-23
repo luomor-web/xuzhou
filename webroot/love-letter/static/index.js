@@ -7,8 +7,10 @@ function Container(wish, time, texts) {
     this.finalText = wish;
     this.beginDate = time
     this.texts = texts
+    this.textIndex = 0;
 
-    this.renderTexts(this.texts);
+    // this.renderTexts(this.texts);
+    this.renderText(this.texts[this.textIndex]);
     document.querySelector('.pass-time .finalText').innerHTML = this.finalText;
     setInterval(() => {
         this.passedSeconds = Math.ceil((+ new Date() - new Date(this.beginDate).getTime()) / 1000);
@@ -21,6 +23,9 @@ function Container(wish, time, texts) {
 }
 
 Container.prototype = {
+    renderText(text) {
+        document.getElementById("letter").innerText = text;
+    },
     renderTexts(texts) {
         let div = document.createElement("div");
         texts.forEach(item => {
