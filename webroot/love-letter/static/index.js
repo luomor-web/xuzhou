@@ -30,6 +30,9 @@ Container.prototype = {
     updateText() {
         let that = this;
         document.addEventListener('click', function (e) {
+            if(e.target.id == "img_music") {
+                return;
+            }
             that.textIndex++
             if (that.textIndex >= that.texts.length) {
               that.textIndex--
