@@ -28,7 +28,7 @@ Container.prototype = {
             d.innerHTML = item;
             div.appendChild(d);
         })
-        document.getElementById("marquee").innerHTML = div.innerHTML;
+        document.getElementById("letter").innerHTML = div.innerHTML;
     },
     finalText() {
         return this.text || "";
